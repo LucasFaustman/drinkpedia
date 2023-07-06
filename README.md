@@ -34,3 +34,9 @@ Steps when building:
 3. JavaScript
 4. CocktailDB API
 5. LibreTranslation API
+
+## How to Run
+
+1. Download the repository to your local machine
+2. npm install to download necessary dependencies
+3. npm run dev to run the server
