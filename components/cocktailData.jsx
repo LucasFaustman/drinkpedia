@@ -1,4 +1,5 @@
-import { useState} from 'react'
+import { useState} from 'react';
+import useTranslation from '../hooks/useTranslation';
 
 
 
@@ -9,11 +10,14 @@ export default function CocktailData() {
   const [cocktailName, setCocktailName] = useState('')
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false)
+  // const { translateText, error: translationError } = useTranslation();
+
 
   async function fetchCocktailData (e) {
     e.preventDefault();
     setIsLoading(true);
     setError('');
+    
 
     try{
     const response = await fetch(
@@ -22,9 +26,10 @@ export default function CocktailData() {
     const data = await response.json();
     // Check if language is set to Spanish
     // if (language === 'es') {
-    //    data.drinks.forEach((cocktail) => {
-    // translateText(cocktail.strInstructions);
-    //   });
+    //   for (const cocktail of data.drinks) {
+    //     const translatedInstructions = await translateText(cocktail.strInstructions);
+    //     cocktail.strInstructions = translatedInstructions || cocktail.strInstructions;
+    //   }
     // }
 
   setCocktailData(data.drinks);
@@ -39,40 +44,6 @@ export default function CocktailData() {
     setError('Error loading cocktails. Please try again later.')
   }
 }
-
-
-// async function translateText(instruction) {
-
-//     try {
-//       const res = await fetch("https://libretranslate.com/translate", {
-//       method: "POST",
-//       body: JSON.stringify({
-//         q: instruction,
-//         source: "en",
-//         target: "es",
-//       }),
-//       headers: { "Content-Type": "application/json" },
-//     });
-//     const data = await res.json();
-
-//     setCocktailData((prevData) =>
-//     prevData.map((cocktail) => {
-//       if (cocktail.strInstructions === instruction) {
-//         return {
-//           ...cocktail,
-//           strInstructions: data.translatedText,
-//         };
-//       }
-//       return cocktail;
-//     })
-//   )
-//   } catch(err) {
-//     setError('Error translating text at this time. Please try again later.')
-//   }
-
-// }
-
-
 
 
   return (
