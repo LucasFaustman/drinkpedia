@@ -43,7 +43,8 @@ export default function CocktailData() {
 
 // async function translateText(instruction) {
 
-//     const res = await fetch("https://libretranslate.com/translate", {
+//     try {
+//       const res = await fetch("https://libretranslate.com/translate", {
 //       method: "POST",
 //       body: JSON.stringify({
 //         q: instruction,
@@ -64,7 +65,11 @@ export default function CocktailData() {
 //       }
 //       return cocktail;
 //     })
-//   );
+//   )
+//   } catch(err) {
+//     setError('Error translating text at this time. Please try again later.')
+//   }
+
 // }
 
 
